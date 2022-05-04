@@ -35,12 +35,13 @@ function FrontPage() {
     );
   }
 
-  return <div>{user ? <Articles /> : LoginRegister}</div>;
+  return <div>{user ? <Articles /> : <LoginRegister />}</div>;
 }
 
 function LoginRegister() {
   return (
     <div>
+      <h1>Welcome to my webpage</h1>
       <div>
         <Link to={"/login"}>Log in</Link>
       </div>
