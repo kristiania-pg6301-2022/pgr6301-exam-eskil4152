@@ -9,8 +9,7 @@ dotenv.config();
 const app = express();
 app.use(express.static("../client/dist/"));
 app.use(bodyParser.json());
-//app.use(cookieParser(process.env.COOKIE_SECRET));
-app.use(cookieParser("dj"));
+app.use(cookieParser(process.env.COOKIE_SECRET));
 
 const users = [
   {
