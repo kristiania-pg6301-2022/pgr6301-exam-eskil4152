@@ -1,94 +1,10 @@
 import ReactDOM from "react-dom";
 import React from "react";
-import {
-  useNavigate,
-  BrowserRouter,
-  Routes,
-  Route,
-  Link,
-} from "react-router-dom";
-
-function FrontPage() {
-  return (
-    <div>
-      <h1>Hello, world!</h1>
-      <div>
-        <Link to={"/articles"}>Articles</Link>
-      </div>
-      <div>
-        <Link to={"/login"}>Log in</Link>
-      </div>
-    </div>
-  );
-}
-
-const articles = [
-  {
-    title: "Man writes js",
-    category: "Technology",
-    text: "He is doing ok",
-  },
-  {
-    title: "F1 2022",
-    category: "Sports",
-    text: "Still going",
-  },
-];
-
-function ArticleCard({ article }) {
-  const { title, category, text } = article;
-  return (
-    <div>
-      <h4>{title}</h4>
-      <h5>{category}</h5>
-      <p>{text}</p>
-    </div>
-  );
-}
-
-function ArticlePreviewCard({ article }) {
-  const { title, category } = article;
-  return (
-    <div>
-      <h4>
-        {title}, {category}
-      </h4>
-    </div>
-  );
-}
-
-function Articles() {
-  return (
-    <div>
-      <h1>Articles</h1>
-      {articles.map((article) => (
-        <ArticlePreviewCard key={article.title} article={article} />
-      ))}
-    </div>
-  );
-}
-
-function Login() {
-  function handleSubmit(e) {
-    e.preventDefault();
-    console.log("Logged in?");
-  }
-
-  return (
-    <form onSubmit={handleSubmit}>
-      <h1>Log in</h1>
-      <div>
-        Username: <input type={"text"} name={"username"} />
-      </div>
-      <div>
-        Password: <input type={"password"} name={"password"} />
-      </div>
-      <div>
-        <button>Log in</button>
-      </div>
-    </form>
-  );
-}
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { Articles } from "./articles";
+import { Login } from "./login";
+import { useLoader } from "./useLoader";
+import { fetchJSON } from "./http";
 
 function Application() {
   return (
@@ -99,6 +15,39 @@ function Application() {
         <Route path={"/login"} element={<Login />} />
       </Routes>
     </BrowserRouter>
+  );
+}
+
+function FrontPage() {
+  const { loading, error, data, reload } = useLoader(
+    async () => await fetchJSON("/api/login")
+  );
+  const user = data;
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  if (error) {
+    return (
+      <div style={{ border: "1px solid red", background: "Pink" }}>
+        An error occurred: {error.toString()}
+      </div>
+    );
+  }
+
+  return <div>{user ? <Articles /> : LoginRegister}</div>;
+}
+
+function LoginRegister() {
+  return (
+    <div>
+      <div>
+        <Link to={"/login"}>Log in</Link>
+      </div>
+      <div>
+        <Link to={"/register"}>Sign up</Link>
+      </div>
+    </div>
   );
 }
 
