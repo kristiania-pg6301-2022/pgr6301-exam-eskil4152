@@ -4,14 +4,7 @@ import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import * as path from "path";
 
-dotenv.config();
-
-const app = express();
-app.use(express.static("../client/dist/"));
-app.use(bodyParser.json());
-app.use(cookieParser(process.env.COOKIE_SECRET));
-
-const users = [
+const USERS = [
   {
     username: "admin",
     password: "admin",
@@ -19,9 +12,16 @@ const users = [
   },
 ];
 
+dotenv.config();
+
+const app = express();
+app.use(express.static("../client/dist/"));
+app.use(bodyParser.json());
+app.use(cookieParser(process.env.COOKIE_SECRET));
+
 app.use((req, res, next) => {
   const { username } = req.signedCookies;
-  req.user = users.find((u) => u.username === username);
+  req.user = USERS.find((u) => u.username === username);
   next();
 });
 
@@ -55,7 +55,7 @@ app.get("/register", (req, res, next) => {
 
 app.post("/api/login", (req, res) => {
   const { username, password } = req.body;
-  const user = users.find(
+  const user = USERS.find(
     (u) => u.username === username && u.password === password
   );
   if (user) {

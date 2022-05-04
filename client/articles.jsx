@@ -82,7 +82,6 @@ export function NewArticle() {
       <div>
         <button>Submit</button>
       </div>
-      <pre>{JSON.stringify({ title, category, text })}</pre>
     </form>
   );
 }
