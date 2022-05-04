@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 function ArticleCard({ article }) {
   const { title, category, text } = article;
   return (
@@ -24,14 +27,67 @@ export function Articles() {
   return (
     <div>
       <h1>Articles</h1>
-      {articles.map((article) => (
+      {ARTICLES.map((article) => (
         <ArticlePreviewCard key={article.title} article={article} />
       ))}
     </div>
   );
 }
 
-const articles = [
+export function NewArticle() {
+  const [title, setTitle] = useState("");
+  const [category, setCategory] = useState("");
+  const [text, setText] = useState("");
+  const [newArticle, setNewArticle] = useState();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setNewArticle({ title, category, text });
+  }, [title, category, text]);
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    ARTICLES.push(newArticle);
+    navigate("../articles");
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>
+        Title:{" "}
+        <input
+          value={title}
+          name={"title"}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+      </div>
+      <div>
+        Category:{" "}
+        <input
+          value={category}
+          name={""}
+          onChange={(e) => setCategory(e.target.value)}
+        />
+      </div>
+      <div>
+        Text:{" "}
+        <div>
+          <textarea
+            value={text}
+            name={"text"}
+            onChange={(e) => setText(e.target.value)}
+          />
+        </div>
+      </div>
+      <div>
+        <button>Submit</button>
+      </div>
+      <pre>{JSON.stringify({ title, category, text })}</pre>
+    </form>
+  );
+}
+
+const ARTICLES = [
   {
     title: "Man writes js",
     category: "Technology",

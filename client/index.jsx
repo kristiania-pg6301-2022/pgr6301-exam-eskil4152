@@ -1,8 +1,8 @@
 import ReactDOM from "react-dom";
 import React from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import { Articles } from "./articles";
-import { Login } from "./login";
+import { Articles, NewArticle } from "./articles";
+import { Login, Register } from "./login";
 import { useLoader } from "./useLoader";
 import { fetchJSON } from "./http";
 
@@ -12,7 +12,9 @@ function Application() {
       <Routes>
         <Route path={"/"} element={<FrontPage />} />
         <Route path={"/articles"} element={<Articles />} />
+        <Route path={"/articles/new"} element={<NewArticle />} />
         <Route path={"/login"} element={<Login />} />
+        <Route path={"/register"} element={<Register />} />
       </Routes>
     </BrowserRouter>
   );
@@ -43,10 +45,10 @@ function LoginRegister() {
     <div>
       <h1>Welcome to my webpage</h1>
       <div>
-        <Link to={"/login"}>Log in</Link>
+        <a href={"/login"}>Log in</a>
       </div>
       <div>
-        <Link to={"/register"}>Sign up</Link>
+        <a href={"/register"}>Register</a>
       </div>
     </div>
   );

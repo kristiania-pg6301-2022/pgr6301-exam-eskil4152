@@ -45,6 +45,14 @@ app.get("/articles", (req, res, next) => {
   }
 });
 
+app.get("/register", (req, res, next) => {
+  if (!req.user) {
+    res.sendStatus(200);
+  } else {
+    next();
+  }
+});
+
 app.post("/api/login", (req, res) => {
   const { username, password } = req.body;
   const user = users.find(

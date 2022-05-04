@@ -8,7 +8,7 @@
     "build:client": "cd client && npm run build",
     "build:server": "cd server && npm run build",
     "start": "cd server && npm start",
-
+    "clean": "rimraf dist .parcel-cache",
     "dev": "concurrently npm:server:dev npm:client:dev",
     "server:dev": "cd server && npm run dev",
     "client:dev": "cd client && npm run dev",
@@ -31,6 +31,7 @@
   "devDependencies": {
     "concurrently": "^7.1.0",
     "husky": "^7.0.4",
-    "prettier": "^2.6.2"
+    "prettier": "^2.6.2",
+    "rimraf": "^3.0.2"
   }
 }

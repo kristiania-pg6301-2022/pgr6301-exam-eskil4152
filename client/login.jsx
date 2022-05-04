@@ -1,10 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
+export function Register() {}
+
 export function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState();
+  const [error, setError] = useState("");
 
   const navigate = useNavigate();
 
@@ -18,8 +20,10 @@ export function Login() {
       },
     });
     if (res.ok) {
-      navigate("/");
-    } else setError("Username or password is wrong");
+      navigate("/articles");
+    } else {
+      setError("Username or password is wrong");
+    }
   }
 
   return (
