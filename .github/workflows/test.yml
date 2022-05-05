@@ -1,0 +1,33 @@
+name: Run tests
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+        run: npm ci
+      - run: npm run test
+        env:
+          MONGODB_URL: ${{ secrets.MONGODB_URL }}
+      - name: Coveralls client
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          working-directory: client
+      - name: Coveralls server
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          working-directory: server
+        env:
+          MONGODB_URL: ${{ secrets.MONGODB_URL }}

@@ -3,60 +3,41 @@ import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import * as path from "path";
+import { MongoClient } from "mongodb";
+import { ArticlesApi } from "./articlesApi.js";
+import { LoginApi } from "./loginApi.js";
 
 dotenv.config();
 
+const mongoClient = new MongoClient(process.env.MONGODB_URL);
+mongoClient.connect().then(async () => {
+  console.log("Connected to database");
+  app.use("/api/articles", ArticlesApi(mongoClient.db("exam-db")));
+  app.use("/api/login", LoginApi(mongoClient.db("exam-db")));
+});
+
 const app = express();
+
 app.use(express.static("../client/dist/"));
 app.use(bodyParser.json());
-//app.use(cookieParser(process.env.COOKIE_SECRET));
-app.use(cookieParser("dj"));
+app.use(cookieParser(process.env.COOKIE_SECRET));
 
-const users = [
-  {
-    username: "admin",
-    password: "admin",
-    fullName: "Eskil Eskil",
-  },
-];
+app.delete("/api/logout", (req, res) => {
+  res.clearCookie("username");
+  res.sendStatus(200);
+});
 
-app.use((req, res, next) => {
+app.use(async (req, res, next) => {
   const { username } = req.signedCookies;
-  req.user = users.find((u) => u.username === username);
+  const mongoDb = mongoClient.db("exam-db");
+  const holder = await mongoDb
+    .collection("users")
+    .find({ username: username })
+    .toArray();
+
+  req.user = holder[0];
+
   next();
-});
-
-app.get("/api/login", (req, res) => {
-  function respond() {
-    if (req.user) {
-      const { username, fullName } = req.user;
-      return res.json({ username, fullName });
-    } else {
-      res.sendStatus(204);
-    }
-  }
-  setTimeout(respond, 400);
-});
-
-app.get("/articles", (req, res, next) => {
-  if (!req.user) {
-    res.sendStatus(401);
-  } else {
-    next();
-  }
-});
-
-app.post("/api/login", (req, res) => {
-  const { username, password } = req.body;
-  const user = users.find(
-    (u) => u.username === username && u.password === password
-  );
-  if (user) {
-    res.cookie("username", user.username, { signed: true });
-    res.sendStatus(200);
-  } else {
-    res.sendStatus(401);
-  }
 });
 
 app.use((req, res, next) => {
