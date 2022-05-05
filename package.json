@@ -14,8 +14,13 @@
     "client:dev": "cd client && npm run dev",
     "format:check": "prettier --check **/*/*.{js,jsx}",
     "format": "prettier --write **/*/*.{js,jsx}",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "npm run test:client && npm run test:server",
+    "test:client": "cd client && npm test",
+    "test:server": "cd server && npm test",
+    "test:coverage": "npm run test:client:coverage && npm run test:server:coverage",
+    "test:client:coverage": "cd client && npm test -- --collectCoverage",
+    "test:server:coverage": "cd server && npm test -- --collectCoverage"
   },
   "repository": {
     "type": "git",

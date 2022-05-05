@@ -4,8 +4,8 @@ import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import * as path from "path";
 import { MongoClient } from "mongodb";
-import { ArticlesApi } from "./api/articlesApi.js";
-import { LoginApi } from "./api/loginApi.js";
+import { ArticlesApi } from "./articlesApi.js";
+import { LoginApi } from "./loginApi.js";
 
 dotenv.config();
 

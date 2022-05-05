@@ -3,19 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { fetchJSON } from "../http";
 import { useLoading } from "../useLoading";
 
-{
-  /*var CATEGORIES = ["Sports", "Breaking", "Drama", "Technology", "Economy", "World"]
-    const sc = document.getElementById("selectCategory");
-
-    for(var i = 0; i < CATEGORIES.length; i++) {
-        var opt = CATEGORIES[i]
-        var el = document.createElement("option")
-        el.textContent = opt
-        el.value = opt
-        sc.append(el)
-    }*/
-}
-
 function ArticleCard({ article }) {
   const { title, category, text, author } = article;
   return (
@@ -215,6 +202,15 @@ export function NewArticle() {
     }
   }
 
+  const CATEGORIES = [
+    "Sports",
+    "Breaking",
+    "Drama",
+    "Technology",
+    "Economy",
+    "World",
+  ];
+
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -227,12 +223,30 @@ export function NewArticle() {
       </div>
       <div>
         Category:{" "}
-        <input
+        <select
           value={category}
           name={"category"}
           onChange={(e) => setCategory(e.target.value)}
-        />
-        {/*<select value={category} name={"category"} id={"selectCategory"} onChange={(e) => setCategory(e.target.value)}><option>Select</option></select>*/}
+        >
+          <option value={CATEGORIES[0].toString()} key={"sports"}>
+            {CATEGORIES[0]}
+          </option>
+          <option value={CATEGORIES[1].toString()} key={"breaking"}>
+            {CATEGORIES[1]}
+          </option>
+          <option value={CATEGORIES[2].toString()} key={"drama"}>
+            {CATEGORIES[2]}
+          </option>
+          <option value={CATEGORIES[3].toString()} key={"tech"}>
+            {CATEGORIES[3]}
+          </option>
+          <option value={CATEGORIES[4].toString()} key={"economy"}>
+            {CATEGORIES[4]}
+          </option>
+          <option value={CATEGORIES[5].toString()} key={"world"}>
+            {CATEGORIES[5]}
+          </option>
+        </select>
       </div>
       <div>
         Text:{" "}

@@ -4,19 +4,45 @@
   "description": "",
   "scripts": {
     "dev": "parcel watch pages/index.html",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "npm install --include=dev && parcel build pages/index.html"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "parcel": "^2.5.0"
+    "parcel": "^2.5.0",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "jest": "^27.5.1",
+    "babel-jest": "^28.0.3"
   },
   "dependencies": {
     "@parcel/transformer-react-refresh-wrap": "^2.5.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.3.0"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-react",
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ]
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "collectCoverageFrom": [
+      "**/*/*.jsx",
+      "**/*/*.js",
+      "!dist/**",
+      "!coverage/**"
+    ]
   }
 }
