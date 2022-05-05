@@ -191,6 +191,8 @@ export function NewArticle() {
   const [category, setCategory] = useState("");
   const [text, setText] = useState("");
   const [newArticle, setNewArticle] = useState();
+
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -206,7 +208,11 @@ export function NewArticle() {
         "content-type": "application/json",
       },
     });
-    navigate("..");
+    if (res.ok) {
+      navigate("..");
+    } else {
+      setError("Error: " + res.status);
+    }
   }
 
   return (
@@ -238,6 +244,7 @@ export function NewArticle() {
           />
         </div>
       </div>
+      <div>{error}</div>
       <div>
         <button>Submit</button>
       </div>

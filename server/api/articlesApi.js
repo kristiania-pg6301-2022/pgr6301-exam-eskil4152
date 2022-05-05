@@ -29,8 +29,6 @@ export function ArticlesApi(mongoDatabase) {
       }))
       .toArray();
 
-    console.log(article[0].author);
-
     if (article[0].author === user) {
       const articles = await mongoDatabase
         .collection("articles")
@@ -45,14 +43,27 @@ export function ArticlesApi(mongoDatabase) {
     }
   });
 
-  router.post("/", (req, res) => {
+  router.post("/", async (req, res) => {
     const { title, category, text } = req.body;
     const author = req.signedCookies.username;
-    mongoDatabase
-      .collection("articles")
-      .insertOne({ title, category, text, author });
-    res.sendStatus(200);
-  });
 
+    const article = await mongoDatabase
+      .collection("articles")
+      .find({ title: title })
+      .map(({ title }) => ({
+        title,
+      }))
+      .toArray();
+
+    if (article.size > 0) {
+      res.sendStatus(400);
+    } else {
+      mongoDatabase
+        .collection("articles")
+        .insertOne({ title, category, text, author });
+
+      res.sendStatus(200);
+    }
+  });
   return router;
 }
