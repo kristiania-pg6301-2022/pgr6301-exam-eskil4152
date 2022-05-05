@@ -4,8 +4,8 @@ import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import * as path from "path";
 import { MongoClient } from "mongodb";
-import { ArticlesApi } from "./articlesApi.js";
-import { LoginApi } from "./loginApi.js";
+import { ArticlesApi } from "./api/articlesApi.js";
+import { LoginApi } from "./api/loginApi.js";
 
 dotenv.config();
 
@@ -29,9 +29,6 @@ app.delete("/api/logout", (req, res) => {
 
 app.use(async (req, res, next) => {
   const { username } = req.signedCookies;
-  /*req.user = USERS.find((u) => u.username === username);
-  next();
-*/
   const mongoDb = mongoClient.db("exam-db");
   const holder = await mongoDb
     .collection("users")

@@ -1,4 +1,4 @@
-# PG6301 eksamen <tittel på løsningen>
+# PG6301 eksamen
 
 [Heroku](link til heroku)
 [Test rapport](link til testrapport)
