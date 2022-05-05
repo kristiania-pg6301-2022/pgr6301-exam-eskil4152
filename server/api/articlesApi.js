@@ -55,7 +55,7 @@ export function ArticlesApi(mongoDatabase) {
       }))
       .toArray();
 
-    if (article.size > 0) {
+    if (article.length > 0) {
       res.sendStatus(400);
     } else {
       mongoDatabase

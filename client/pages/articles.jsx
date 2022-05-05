@@ -73,7 +73,7 @@ export function FullArticles() {
         <button>Edit article</button>
       </a>
       {data.map((article) => (
-        <div>
+        <div id={"cards"}>
           <ArticleCard key={article.title} article={article} />
         </div>
       ))}
@@ -211,7 +211,7 @@ export function NewArticle() {
     if (res.ok) {
       navigate("..");
     } else {
-      setError("Error: " + res.status);
+      setError("Error: Article " + title + " already exists");
     }
   }
 
