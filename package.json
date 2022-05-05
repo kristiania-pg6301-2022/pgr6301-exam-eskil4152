@@ -12,8 +12,8 @@
     "dev": "concurrently npm:server:dev npm:client:dev",
     "server:dev": "cd server && npm run dev",
     "client:dev": "cd client && npm run dev",
-    "format:check": "prettier --check **/*.{js,jsx}",
-    "format": "prettier --write **/*.{js,jsx}",
+    "format:check": "prettier --check **/*/*.{js,jsx}",
+    "format": "prettier --write **/*/*.{js,jsx}",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install"
   },

@@ -1,32 +1,31 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-
-export function Logout(){
+export function Logout() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  async function handleSubmit(e){
-    e.preventDefault()
+  async function handleSubmit(e) {
+    e.preventDefault();
     const res = await fetch("/api/logout", {
-      method: "delete"
-    })
+      method: "delete",
+    });
 
     if (res.ok) {
-      navigate("..")
+      navigate("..");
     } else {
-      setError("Error: " + error.toString())
+      setError("Error: " + error.toString());
     }
   }
 
   return (
-      <form onSubmit={handleSubmit}>
-        <div>
-          <h1>Are you sure?</h1>
-          <button>Log out</button>
-        </div>
-      </form>
-  )
+    <form onSubmit={handleSubmit}>
+      <div>
+        <h1>Are you sure?</h1>
+        <button>Log out</button>
+      </div>
+    </form>
+  );
 }
 
 export function Register() {
