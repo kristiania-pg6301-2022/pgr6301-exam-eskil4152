@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { fetchJSON } from "./http";
+import { useLoading } from "./useLoading";
 
 function ArticleCard({ article }) {
   const { title, category, text } = article;
@@ -23,11 +25,33 @@ function ArticlePreviewCard({ article }) {
   );
 }
 
+const Context = React.createContext({
+  async listArticles() {
+    return await fetchJSON("/api/articles");
+  },
+});
+
 export function Articles() {
+  const { listArticles } = useContext(Context);
+
+  const { loading, error, data } = useLoading(async () => await listArticles());
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  if (error) {
+    return (
+      <div>
+        <h1>Error</h1>
+        <div id="error-text">{error.toString()}</div>
+      </div>
+    );
+  }
+
   return (
     <div>
-      <h1>Articles</h1>
-      {ARTICLES.map((article) => (
+      <h1>Articles in the database</h1>
+      {data.map((article) => (
         <ArticlePreviewCard key={article.title} article={article} />
       ))}
     </div>
@@ -45,10 +69,16 @@ export function NewArticle() {
     setNewArticle({ title, category, text });
   }, [title, category, text]);
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    ARTICLES.push(newArticle);
-    navigate("../articles");
+    const res = await fetch("/api/articles", {
+      method: "post",
+      body: JSON.stringify({ title, category, text }),
+      headers: {
+        "content-type": "application/json",
+      },
+    });
+    navigate("..");
   }
 
   return (
@@ -86,15 +116,4 @@ export function NewArticle() {
   );
 }
 
-const ARTICLES = [
-  {
-    title: "Man writes js",
-    category: "Technology",
-    text: "He is doing ok",
-  },
-  {
-    title: "F1 2022",
-    category: "Sports",
-    text: "Still going",
-  },
-];
+const ARTICLES = [];

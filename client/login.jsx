@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { USERS } from "../users";
+import { useEffect, useState } from "react";
 
 export function Register() {
   const [username, setUsername] = useState("");
@@ -9,12 +8,27 @@ export function Register() {
   const [newUser, setNewUser] = useState({ username, password, fullName });
   const [error, setError] = useState("");
 
+  useEffect(() => {
+    setNewUser({ username, password, fullName });
+  }, [username, password, fullName]);
+
   const navigate = useNavigate();
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    USERS.push(newUser);
-    navigate("../articles");
+    const res = await fetch("/api/login/new", {
+      method: "post",
+      body: JSON.stringify({ username, password, fullName }),
+      headers: {
+        "content-type": "application/json",
+      },
+    });
+
+    if (res.ok) {
+      navigate("..");
+    } else {
+      setError("Error: " + error.toString());
+    }
   }
 
   return (
@@ -67,8 +81,9 @@ export function Login() {
         "content-type": "application/json",
       },
     });
+
     if (res.ok) {
-      navigate("/articles");
+      navigate("..");
     } else {
       setError("Username or password is wrong");
     }
