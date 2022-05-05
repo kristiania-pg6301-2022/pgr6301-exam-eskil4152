@@ -15,19 +15,10 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 16.x
-        run: npm ci
-      - run: npm run test
-        env:
-          MONGODB_URL: ${{ secrets.MONGODB_URL }}
-      - name: Coveralls client
+      - run: npm ci
+      - run: npm run verify
+      - name: Coveralls
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           working-directory: client
-      - name: Coveralls server
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          working-directory: server
-        env:
-          MONGODB_URL: ${{ secrets.MONGODB_URL }}
