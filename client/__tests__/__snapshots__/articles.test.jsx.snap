@@ -1,0 +1,666 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`articles tests should return article card 1`] = `
+<div>
+  <div>
+    <h3>
+      , 
+    </h3>
+    <h5>
+      Author: 
+    </h5>
+    <p />
+  </div>
+</div>
+`;
+
+exports[`articles tests should return article preview card 1`] = `
+<div>
+  <div>
+    <h4>
+      , 
+    </h4>
+  </div>
+</div>
+`;
+
+exports[`articles tests should return edit article form 1`] = `
+<app>
+  <form>
+    <div>
+      Name of article to edit:
+       
+      <input
+        name="title"
+        type="text"
+      />
+    </div>
+    <div>
+      New name:
+       
+      <input
+        name="newTitle"
+        type="text"
+      />
+    </div>
+    <div>
+      New category:
+       
+      <input
+        name="newCategory"
+        type="text"
+      />
+    </div>
+    <div>
+      New text:
+      <div>
+        <textarea
+          name="newText"
+        />
+      </div>
+    </div>
+    <div />
+    <button>
+      Submit
+    </button>
+  </form>
+</app>
+`;
+
+exports[`articles tests should return full article 1`] = `
+<app>
+  <div>
+    <h1>
+      Error
+    </h1>
+    <div
+      id="error-text"
+    >
+      ReferenceError: fetch is not defined
+    </div>
+  </div>
+</app>
+`;
+
+exports[`articles tests should return new article form 1`] = `
+<app>
+  <form>
+    <div>
+      Title:
+       
+      <input
+        name="title"
+        value=""
+      />
+    </div>
+    <div>
+      Category:
+       
+      <select
+        name="category"
+      >
+        <option
+          value="Sports"
+        >
+          Sports
+        </option>
+        <option
+          value="Breaking"
+        >
+          Breaking
+        </option>
+        <option
+          value="Drama"
+        >
+          Drama
+        </option>
+        <option
+          value="Technology"
+        >
+          Technology
+        </option>
+        <option
+          value="Economy"
+        >
+          Economy
+        </option>
+        <option
+          value="World"
+        >
+          World
+        </option>
+      </select>
+    </div>
+    <div>
+      Text:
+       
+      <div>
+        <textarea
+          name="text"
+        />
+      </div>
+    </div>
+    <div />
+    <div>
+      <button>
+        Submit
+      </button>
+    </div>
+  </form>
+</app>
+`;
+
+exports[`articles tests should return preview article 1`] = `
+<app>
+  <div>
+    <h1>
+      Error
+    </h1>
+    <div
+      id="error-text"
+    >
+      ReferenceError: fetch is not defined
+    </div>
+  </div>
+</app>
+`;
+
+exports[`movies tests should return article card 1`] = `
+<div>
+  <div>
+    <h3>
+      , 
+    </h3>
+    <h5>
+      Author: 
+    </h5>
+    <p />
+  </div>
+</div>
+`;
+
+exports[`movies tests should return article preview card 1`] = `
+<div>
+  <div>
+    <h4>
+      , 
+    </h4>
+  </div>
+</div>
+`;
+
+exports[`movies tests should return edit article form 1`] = `
+<app>
+  <form>
+    <div>
+      Title:
+       
+      <input
+        name="title"
+        value=""
+      />
+    </div>
+    <div>
+      Category:
+       
+      <select
+        name="category"
+      >
+        <option
+          value="Sports"
+        >
+          Sports
+        </option>
+        <option
+          value="Breaking"
+        >
+          Breaking
+        </option>
+        <option
+          value="Drama"
+        >
+          Drama
+        </option>
+        <option
+          value="Technology"
+        >
+          Technology
+        </option>
+        <option
+          value="Economy"
+        >
+          Economy
+        </option>
+        <option
+          value="World"
+        >
+          World
+        </option>
+      </select>
+    </div>
+    <div>
+      Text:
+       
+      <div>
+        <textarea
+          name="text"
+        />
+      </div>
+    </div>
+    <div />
+    <div>
+      <button>
+        Submit
+      </button>
+    </div>
+  </form>
+</app>
+`;
+
+exports[`movies tests should return full article 1`] = `
+<app>
+  <form>
+    <div>
+      Title:
+       
+      <input
+        name="title"
+        value=""
+      />
+    </div>
+    <div>
+      Category:
+       
+      <select
+        name="category"
+      >
+        <option
+          value="Sports"
+        >
+          Sports
+        </option>
+        <option
+          value="Breaking"
+        >
+          Breaking
+        </option>
+        <option
+          value="Drama"
+        >
+          Drama
+        </option>
+        <option
+          value="Technology"
+        >
+          Technology
+        </option>
+        <option
+          value="Economy"
+        >
+          Economy
+        </option>
+        <option
+          value="World"
+        >
+          World
+        </option>
+      </select>
+    </div>
+    <div>
+      Text:
+       
+      <div>
+        <textarea
+          name="text"
+        />
+      </div>
+    </div>
+    <div />
+    <div>
+      <button>
+        Submit
+      </button>
+    </div>
+  </form>
+</app>
+`;
+
+exports[`movies tests should return new article form 1`] = `
+<app>
+  <form>
+    <div>
+      Title:
+       
+      <input
+        name="title"
+        value=""
+      />
+    </div>
+    <div>
+      Category:
+       
+      <select
+        name="category"
+      >
+        <option
+          value="Sports"
+        >
+          Sports
+        </option>
+        <option
+          value="Breaking"
+        >
+          Breaking
+        </option>
+        <option
+          value="Drama"
+        >
+          Drama
+        </option>
+        <option
+          value="Technology"
+        >
+          Technology
+        </option>
+        <option
+          value="Economy"
+        >
+          Economy
+        </option>
+        <option
+          value="World"
+        >
+          World
+        </option>
+      </select>
+    </div>
+    <div>
+      Text:
+       
+      <div>
+        <textarea
+          name="text"
+        />
+      </div>
+    </div>
+    <div />
+    <div>
+      <button>
+        Submit
+      </button>
+    </div>
+  </form>
+</app>
+`;
+
+exports[`movies tests should return preview article 1`] = `
+<app>
+  <form>
+    <div>
+      Title:
+       
+      <input
+        name="title"
+        value=""
+      />
+    </div>
+    <div>
+      Category:
+       
+      <select
+        name="category"
+      >
+        <option
+          value="Sports"
+        >
+          Sports
+        </option>
+        <option
+          value="Breaking"
+        >
+          Breaking
+        </option>
+        <option
+          value="Drama"
+        >
+          Drama
+        </option>
+        <option
+          value="Technology"
+        >
+          Technology
+        </option>
+        <option
+          value="Economy"
+        >
+          Economy
+        </option>
+        <option
+          value="World"
+        >
+          World
+        </option>
+      </select>
+    </div>
+    <div>
+      Text:
+       
+      <div>
+        <textarea
+          name="text"
+        />
+      </div>
+    </div>
+    <div />
+    <div>
+      <button>
+        Submit
+      </button>
+    </div>
+  </form>
+</app>
+`;
+
+exports[`movies tests should show new article form 1`] = `
+<app>
+  <form>
+    <div>
+      Title:
+       
+      <input
+        name="title"
+        value=""
+      />
+    </div>
+    <div>
+      Category:
+       
+      <select
+        name="category"
+      >
+        <option
+          value="Sports"
+        >
+          Sports
+        </option>
+        <option
+          value="Breaking"
+        >
+          Breaking
+        </option>
+        <option
+          value="Drama"
+        >
+          Drama
+        </option>
+        <option
+          value="Technology"
+        >
+          Technology
+        </option>
+        <option
+          value="Economy"
+        >
+          Economy
+        </option>
+        <option
+          value="World"
+        >
+          World
+        </option>
+      </select>
+    </div>
+    <div>
+      Text:
+       
+      <div>
+        <textarea
+          name="text"
+        />
+      </div>
+    </div>
+    <div />
+    <div>
+      <button>
+        Submit
+      </button>
+    </div>
+  </form>
+</app>
+`;
+
+exports[`movies tests should show new movie form 1`] = `
+<app>
+  <form>
+    <div>
+      Title:
+       
+      <input
+        name="title"
+        value=""
+      />
+    </div>
+    <div>
+      Category:
+       
+      <select
+        name="category"
+      >
+        <option
+          value="Sports"
+        >
+          Sports
+        </option>
+        <option
+          value="Breaking"
+        >
+          Breaking
+        </option>
+        <option
+          value="Drama"
+        >
+          Drama
+        </option>
+        <option
+          value="Technology"
+        >
+          Technology
+        </option>
+        <option
+          value="Economy"
+        >
+          Economy
+        </option>
+        <option
+          value="World"
+        >
+          World
+        </option>
+      </select>
+    </div>
+    <div>
+      Text:
+       
+      <div>
+        <textarea
+          name="text"
+        />
+      </div>
+    </div>
+    <div />
+    <div>
+      <button>
+        Submit
+      </button>
+    </div>
+  </form>
+</app>
+`;
+
+exports[`movies tests should shw new movie components 1`] = `
+<app>
+  <form>
+    <div>
+      Title:
+       
+      <input
+        name="title"
+        value=""
+      />
+    </div>
+    <div>
+      Category:
+       
+      <select
+        name="category"
+      >
+        <option
+          value="Sports"
+        >
+          Sports
+        </option>
+        <option
+          value="Breaking"
+        >
+          Breaking
+        </option>
+        <option
+          value="Drama"
+        >
+          Drama
+        </option>
+        <option
+          value="Technology"
+        >
+          Technology
+        </option>
+        <option
+          value="Economy"
+        >
+          Economy
+        </option>
+        <option
+          value="World"
+        >
+          World
+        </option>
+      </select>
+    </div>
+    <div>
+      Text:
+       
+      <div>
+        <textarea
+          name="text"
+        />
+      </div>
+    </div>
+    <div />
+    <div>
+      <button>
+        Submit
+      </button>
+    </div>
+  </form>
+</app>
+`;

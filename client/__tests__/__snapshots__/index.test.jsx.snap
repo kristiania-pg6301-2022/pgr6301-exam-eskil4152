@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`index tests should return application 1`] = `
+<div>
+  <header>
+    <a
+      href="/"
+    >
+      Front page
+    </a>
+    <div
+      class="menu-divider"
+    />
+    <a
+      href="/logout"
+    >
+      Log out
+    </a>
+  </header>
+  <sidebar>
+    <div>
+      <div>
+        Loading...
+      </div>
+    </div>
+  </sidebar>
+  <main>
+    <div>
+      Loading...
+    </div>
+  </main>
+</div>
+`;
+
+exports[`index tests should return front page 1`] = `
+<div>
+  <div>
+    Loading...
+  </div>
+</div>
+`;
+
+exports[`index tests should return index 1`] = `
+<div>
+  <div>
+    Loading...
+  </div>
+</div>
+`;
+
+exports[`index tests should return loginOrRegisterPage 1`] = `
+<div>
+  <div>
+    <h1>
+      Welcome to my webpage
+    </h1>
+    <h3>
+      You have to log in to see full articles
+    </h3>
+    <div>
+      <a
+        href="/login"
+      >
+        Log in
+      </a>
+    </div>
+    <div>
+      <a
+        href="/register"
+      >
+        Register
+      </a>
+    </div>
+  </div>
+</div>
+`;

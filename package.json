@@ -8,7 +8,6 @@
     "build:client": "cd client && npm run build",
     "build:server": "cd server && npm run build",
     "start": "cd server && npm start",
-    "clean": "rimraf dist .parcel-cache",
     "dev": "concurrently npm:server:dev npm:client:dev",
     "server:dev": "cd server && npm run dev",
     "client:dev": "cd client && npm run dev",
@@ -34,9 +33,13 @@
   },
   "homepage": "https://github.com/kristiania-pg6301-2022/pgr6301-exam-eskil4152#readme",
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.17.10",
     "concurrently": "^7.1.0",
     "husky": "^7.0.4",
     "prettier": "^2.6.2",
     "rimraf": "^3.0.2"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.17.9"
   }
 }

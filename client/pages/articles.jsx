@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { fetchJSON } from "../http";
 import { useLoading } from "../useLoading";
 
-function ArticleCard({ article }) {
+export function ArticleCard({ article }) {
   const { title, category, text, author } = article;
   return (
     <div>
@@ -16,7 +16,7 @@ function ArticleCard({ article }) {
   );
 }
 
-function ArticlePreviewCard({ article }) {
+export function ArticlePreviewCard({ article }) {
   const { title, category } = article;
   return (
     <div>

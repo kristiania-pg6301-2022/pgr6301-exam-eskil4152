@@ -21,10 +21,12 @@
     "mongodb": "^4.5.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.16",
     "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
     "babel-jest": "^27.5.1",
-    "jest": "^27.5.1"
+    "jest": "^27.5.1",
+    "nodemon": "^2.0.16",
+    "supertest": "^6.2.3"
   },
   "babel": {
     "presets": [
