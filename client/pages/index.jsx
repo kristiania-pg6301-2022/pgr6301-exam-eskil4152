@@ -1,5 +1,3 @@
-import ReactDOM from "react-dom";
-import React from "react";
 import {
   BrowserRouter,
   Link,
@@ -13,12 +11,12 @@ import {
   FullArticles,
   NewArticle,
 } from "./articles";
+import { Login, Logout, Register } from "./login";
 import { useLoader } from "../useLoader";
 import { fetchJSON } from "../http";
-import "./index.css";
-import { Login, Register, Logout } from "./login";
+import React from "react";
 
-function Application() {
+export function Application() {
   return (
     <BrowserRouter>
       <header>
@@ -46,7 +44,7 @@ function Application() {
   );
 }
 
-function FrontPage() {
+export function FrontPage() {
   const navigate = useNavigate();
   const { loading, error, data, reload } = useLoader(
     async () => await fetchJSON("/api/login")
@@ -67,7 +65,7 @@ function FrontPage() {
   return <div>{!user ? <LoginRegister /> : <FullArticles />}</div>;
 }
 
-function LoginRegister() {
+export function LoginRegister() {
   return (
     <div>
       <h1>Welcome to my webpage</h1>
@@ -81,5 +79,3 @@ function LoginRegister() {
     </div>
   );
 }
-
-ReactDOM.render(<Application />, document.getElementById("app"));
